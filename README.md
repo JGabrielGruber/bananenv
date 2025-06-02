@@ -6,7 +6,7 @@ A lightweight shell environment manager for setting and syncing environment vari
 - **Set and Sync Vars**: Use `@set FOO=BAR` to set variables that persist across terminals.
 - **Auto-Navigate**: Automatically `cd` to `WORKDIR` in new terminals.
 - **Bash Integration**: Seamless setup with `eval "$(bananenv init bash)"`.
-- **Single Temp File**: Vars stored in `/tmp/bananenv.session`, cleared on reboot.
+- **Single Temp File**: Vars stored in `/tmp/bananenv.$USER.session`, cleared on reboot.
 - **Cyber Ape Aesthetic**: Built with 🦍 strength and 🍌 flair!
 
 ## Installation
@@ -69,6 +69,6 @@ MIT License. See [LICENSE](LICENSE) for details.
 - Optional persistent storage for vars across reboots.
 
 ## Acknowledgments
-Built with love by @jgabrielgruber and cyber ape assistant 🐒. Inspired by Starship’s shell magic.
+Built with love by @jgabrielgruber and cyber ape assistant 🐒 @grok. Inspired by Starship’s shell magic.
 
 APES STRONG TOGETHER! 🦍🐒
