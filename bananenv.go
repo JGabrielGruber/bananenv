@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -88,7 +87,7 @@ func getEnvFile() string {
 
 func loadEnvs(envFile string) map[string]string {
 	envs := make(map[string]string)
-	data, err := ioutil.ReadFile(envFile)
+	data, err := os.ReadFile(envFile)
 	if err != nil && !os.IsNotExist(err) {
 		fmt.Fprintf(os.Stderr, "Failed to read env file: %v\n", err)
 		os.Exit(1)
@@ -112,7 +111,7 @@ func saveEnvs(envFile string, envs map[string]string) {
 		lines = append(lines, fmt.Sprintf("export %s=\"%s\"", k, v))
 	}
 	data := strings.Join(lines, "\n")
-	if err := ioutil.WriteFile(envFile, []byte(data), 0600); err != nil {
+	if err := os.WriteFile(envFile, []byte(data), 0600); err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to write env file: %v\n", err)
 		os.Exit(1)
 	}
