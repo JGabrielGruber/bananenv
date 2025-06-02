@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/user"
 	"strings"
 )
 
@@ -65,8 +66,13 @@ func main() {
 func getEnvFile() string {
 	envFile := os.Getenv(envFileVar)
 	if envFile == "" {
-		// Use a fixed temp file name
-		envFile = "/tmp/bananenv.session"
+		name := "anon"
+		current, err := user.Current()
+		if err == nil {
+			name = current.Username
+		}
+		// Use a user based temp file name
+		envFile = fmt.Sprintf("/tmp/bananenv.%s.session", name)
 		// Create file if it doesn't exist
 		if _, err := os.Stat(envFile); os.IsNotExist(err) {
 			file, err := os.Create(envFile)
